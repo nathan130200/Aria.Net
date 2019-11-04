@@ -3,7 +3,7 @@
 namespace Aria.Net.Entities.Download
 {
 	public enum AriaDownloadPosition
-    {
+	{
 		[EnumMember(Value = "POS_CUR")]
 		Current,
 
@@ -12,5 +12,5 @@ namespace Aria.Net.Entities.Download
 
 		[EnumMember(Value = "POS_END")]
 		End
-    }
+	}
 }

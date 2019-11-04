@@ -2,12 +2,12 @@
 
 namespace Aria.Net.Entities.Download
 {
-    public enum AriaDownloadUriStatus
-    {
-        [EnumMember(Value = "used")]
-        Used,
+	public enum AriaDownloadUriStatus
+	{
+		[EnumMember(Value = "used")]
+		Used,
 
-        [EnumMember(Value = "waiting")]
-        Waiting
-    }
+		[EnumMember(Value = "waiting")]
+		Waiting
+	}
 }

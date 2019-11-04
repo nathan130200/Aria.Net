@@ -2,9 +2,9 @@
 
 namespace Aria.Net.Entities.Download
 {
-    public class AriaStats
-    {
-        [JsonProperty("downloadSpeed", NullValueHandling = NullValueHandling.Ignore)]
+	public class AriaStats
+	{
+		[JsonProperty("downloadSpeed", NullValueHandling = NullValueHandling.Ignore)]
 		public string DownloadSpeed { get; internal set; }
 
 		[JsonProperty("uploadSpeed", NullValueHandling = NullValueHandling.Ignore)]

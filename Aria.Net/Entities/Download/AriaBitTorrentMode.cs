@@ -2,12 +2,12 @@
 
 namespace Aria.Net.Entities.Download
 {
-    public enum AriaBitTorrentMode
-    {
-        [EnumMember(Value = "single")]
-        Single,
+	public enum AriaBitTorrentMode
+	{
+		[EnumMember(Value = "single")]
+		Single,
 
-        [EnumMember(Value = "multi")]
-        Multi
-    }
+		[EnumMember(Value = "multi")]
+		Multi
+	}
 }
