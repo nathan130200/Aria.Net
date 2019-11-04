@@ -100,12 +100,12 @@ namespace Aria.Net
 				else
 					tsc.TrySetResult(result);
 			});
-			this._callbacks.AddOrUpdate(id, callback, (key, old) => callback);
 
-			this._websocket.SendAsync(payload.ToString(Formatting.None), done =>
+			this._callbacks.AddOrUpdate(id, callback, (key, old) => callback);
+			this._websocket.SendAsync(payload.ToString(Formatting.None), completed =>
 			{
-				if (!done)
-					tsc.TrySetResult(null);
+				if (!completed)
+					tsc.TrySetException(new Exception("Cannot send payload to Aria2 RPC"));
 			});
 
 			return tsc.Task;
