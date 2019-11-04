@@ -76,24 +76,30 @@ namespace Aria.Net
 			return Task.CompletedTask;
 		}
 
-		internal Task<AriaResponse> SendAsync(string method, JArray argumens)
+		internal Task<AriaResponse> SendAsync(string method, JArray arguments = default)
 		{
 			var tsc = new TaskCompletionSource<AriaResponse>();
 			var id = Guid.NewGuid().ToString("D");
 
-			if (argumens == null)
-				argumens = new JArray();
+			if (arguments == null)
+				arguments = new JArray();
 
 			if (this.Configuration.UseAuthentication && !string.IsNullOrEmpty(this.Configuration.Token))
-				argumens.AddFirst(new JArray($"token:{this.Configuration.Token}")); // [secret], ...params
+				arguments.AddFirst(new JArray($"token:{this.Configuration.Token}")); // [secret], ...params
 
 			var payload = new JObject();
 			payload["id"] = id;
 			payload["method"] = method;
 			payload["json-rpc"] = "2.0";
-			payload["params"] = argumens;
+			payload["params"] = arguments;
 
-			var callback = new Action<AriaResponse>(result => tsc.TrySetResult(result));
+			var callback = new Action<AriaResponse>(result =>
+			{
+				if (result.Error != null)
+					tsc.TrySetException(new AriaException(result.Error.Code, result.Error.Message));
+				else
+					tsc.TrySetResult(result);
+			});
 			this._callbacks.AddOrUpdate(id, callback, (key, old) => callback);
 
 			this._websocket.SendAsync(payload.ToString(Formatting.None), done =>
@@ -149,5 +155,17 @@ namespace Aria.Net
 
 		public Task<IEnumerable<AriaDownload>> GetStoppedDownloadsAsync(int index = -1, int limit = 5, params string[] filter) =>
 			this.GetDownloadsAsync("aria2.tellStopped", new JArray(index, limit, new JArray(filter)));
+
+		public async Task<AriaStats> GetStatsAsync()
+		{
+			var res = await this.SendAsync("aria2.getGlobalStat");
+			return res.Result.ToObject<AriaStats>();
+		}
+
+		public async Task<AriaVersion> GetVersionAsync()
+		{
+			var res = await this.SendAsync("aria2.getVersion");
+			return res.Result.ToObject<AriaVersion>();
+		}
 	}
 }
