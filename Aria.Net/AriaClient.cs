@@ -90,7 +90,7 @@ namespace Aria.Net
 			var payload = new JObject();
 			payload["id"] = id;
 			payload["method"] = method;
-			payload["json-rpc"] = "2.0";
+			payload["jsonrpc"] = "2.0";
 			payload["params"] = arguments;
 
 			var callback = new Action<AriaResponse>(result =>

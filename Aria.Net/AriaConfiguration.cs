@@ -18,23 +18,13 @@
         public bool IsSecure { internal get; set; } = false;
 
         /// <summary>
-        /// Aria2 RPC secret token (leave empty if authentication is not enabled)
+        /// Enable Aria2 RPC authentication (default: false)
         /// </summary>
         public bool UseAuthentication { internal get; set; } = false;
 
         /// <summary>
-        /// Aria2 RPC token (empty if authentication not enabled)
+        /// Aria2 RPC authentication token (default: empty)
         /// </summary>
         public string Token { internal get; set; } = string.Empty;
-
-        /// <summary>
-        /// Aria2 RPC username (empty if authentication not enabled)
-        /// </summary>
-        public string Username { internal get; set; } = string.Empty;
-
-        /// <summary>
-        /// Aria2 RPC password (empty if authentication not enabled)
-        /// </summary>
-        public string Password { internal get; set; } = string.Empty;
     }
 }
