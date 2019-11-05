@@ -34,7 +34,7 @@
             // 
             // tbFileNameOrTitle
             // 
-            this.tbFileNameOrTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbFileNameOrTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbFileNameOrTitle.BackColor = System.Drawing.SystemColors.Window;
             this.tbFileNameOrTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;

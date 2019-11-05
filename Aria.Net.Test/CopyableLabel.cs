@@ -6,7 +6,7 @@ namespace System.Windows.Forms
     {
         public CopyableLabel() : base()
         {
-            
+
         }
 
         [EditorBrowsable(EditorBrowsableState.Always)]

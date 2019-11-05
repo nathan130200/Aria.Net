@@ -116,7 +116,7 @@ namespace Aria.Net.Test
 
         async Task GetCurrentDownloadsAsync()
         {
-            while(client != null)
+            while (client != null)
             {
                 {
                     _ = client.GetActiveDownloadsAsync().ContinueWith(t =>

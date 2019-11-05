@@ -132,7 +132,12 @@ namespace Aria.Net
 				download.Client = this;
 
 				if (download.BitTorrent != null)
+				{
 					download.BitTorrent.Download = download;
+
+					if (download.BitTorrent.Info != null)
+						download.BitTorrent.Info.BitTorrent = download.BitTorrent;
+				}
 
 				if (download.Files != null)
 				{

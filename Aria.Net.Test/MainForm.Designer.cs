@@ -49,7 +49,7 @@
             // 
             // tbEndPoint
             // 
-            this.tbEndPoint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbEndPoint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbEndPoint.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbEndPoint.Location = new System.Drawing.Point(8, 8);
@@ -164,7 +164,7 @@
             // 
             // tbActiveDownloads
             // 
-            this.tbActiveDownloads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbActiveDownloads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbActiveDownloads.BackColor = System.Drawing.SystemColors.Window;
             this.tbActiveDownloads.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -176,7 +176,7 @@
             // 
             // tbTotalDownloads
             // 
-            this.tbTotalDownloads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbTotalDownloads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbTotalDownloads.BackColor = System.Drawing.SystemColors.Window;
             this.tbTotalDownloads.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -188,7 +188,7 @@
             // 
             // tbStoppedDownloads
             // 
-            this.tbStoppedDownloads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbStoppedDownloads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbStoppedDownloads.BackColor = System.Drawing.SystemColors.Window;
             this.tbStoppedDownloads.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -200,7 +200,7 @@
             // 
             // tbDownloadsInQueue
             // 
-            this.tbDownloadsInQueue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbDownloadsInQueue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDownloadsInQueue.BackColor = System.Drawing.SystemColors.Window;
             this.tbDownloadsInQueue.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -212,7 +212,7 @@
             // 
             // tbUploadSpeed
             // 
-            this.tbUploadSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbUploadSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbUploadSpeed.BackColor = System.Drawing.SystemColors.Window;
             this.tbUploadSpeed.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -224,7 +224,7 @@
             // 
             // tbDownloadSpeed
             // 
-            this.tbDownloadSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbDownloadSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDownloadSpeed.BackColor = System.Drawing.SystemColors.Window;
             this.tbDownloadSpeed.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -266,10 +266,10 @@
 
         }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.TextBox tbEndPoint;
-		private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.TextBox tbEndPoint;
+        private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.GroupBox gbxStats;
         private System.Windows.Forms.Label lbActiveDownloads;
         private System.Windows.Forms.Label lbTotalStoppedDownloads;

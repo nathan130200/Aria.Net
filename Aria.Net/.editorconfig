@@ -3,11 +3,11 @@ end_of_line = crlf
 
 [*.{csproj,xml,resx}]
 indent_style = space
-indent_size = 2
+indent_size  = 2
 
 [*.cs]
-indent_style = tab
-dotnet_style_qualification_for_event = true:error
-dotnet_style_qualification_for_field = true:error
-dotnet_style_qualification_for_method = true:error
-dotnet_style_qualification_for_property = true:error
+indent_style                            = tab
+dotnet_style_qualification_for_event    = true : error
+dotnet_style_qualification_for_field    = true : error
+dotnet_style_qualification_for_method   = true : error
+dotnet_style_qualification_for_property = true : error

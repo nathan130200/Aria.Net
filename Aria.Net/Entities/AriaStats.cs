@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Aria.Net.Entities.Download
+namespace Aria.Net.Entities
 {
 	public class AriaStats
 	{

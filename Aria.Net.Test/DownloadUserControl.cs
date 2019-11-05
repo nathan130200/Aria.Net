@@ -53,7 +53,7 @@ namespace Aria.Net.Test
                     if (result.Status == AriaDownloadStatus.Completed)
                         break;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Debug.WriteLine(ex.ToString());
                 }

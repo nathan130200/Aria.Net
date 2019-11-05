@@ -55,9 +55,9 @@
     <Compile Include="Entities\Download\AriaDownloadStatus.cs" />
     <Compile Include="Entities\Download\AriaDownloadUri.cs" />
     <Compile Include="Entities\Download\AriaDownloadUriStatus.cs" />
-    <Compile Include="Entities\Download\AriaException.cs" />
-    <Compile Include="Entities\Download\AriaStats.cs" />
-    <Compile Include="Entities\Download\AriaVersion.cs" />
+    <Compile Include="AriaException.cs" />
+    <Compile Include="Entities\AriaStats.cs" />
+    <Compile Include="Entities\AriaVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
