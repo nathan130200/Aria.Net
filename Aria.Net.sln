@@ -5,10 +5,7 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aria.Net", "Aria.Net\Aria.Net.csproj", "{25B784A0-793C-4EBB-BE65-E1756665A900}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{501296FC-5A3D-48D2-9EBA-16685E0BC5D1}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aria.Net.Test", "Aria.Net.Test\Aria.Net.Test.csproj", "{6ACB9853-4875-4244-A43F-768A1DEB4C9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +17,10 @@ Global
 		{25B784A0-793C-4EBB-BE65-E1756665A900}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25B784A0-793C-4EBB-BE65-E1756665A900}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25B784A0-793C-4EBB-BE65-E1756665A900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ACB9853-4875-4244-A43F-768A1DEB4C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ACB9853-4875-4244-A43F-768A1DEB4C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ACB9853-4875-4244-A43F-768A1DEB4C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ACB9853-4875-4244-A43F-768A1DEB4C9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

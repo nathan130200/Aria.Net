@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Aria.Net.Entities;
 using Aria.Net.Entities.Download;
@@ -54,8 +55,10 @@ namespace Aria.Net
 			if (!e.IsText)
 				return;
 
-			var response = JObject.Parse(e.Data)
-				.ToObject<AriaResponse>();
+			var raw = JObject.Parse(e.Data);
+			var response = raw.ToObject<AriaResponse>();
+
+			Debug.WriteLine("Aria2/Recv <<:\n{0}\n", args: raw.ToString(Formatting.Indented));
 
 			if (!string.IsNullOrEmpty(response.Id))
 			{
@@ -96,7 +99,11 @@ namespace Aria.Net
 			var callback = new Action<AriaResponse>(result =>
 			{
 				if (result.Error != null)
-					tsc.TrySetException(new AriaException(result.Error.Code, result.Error.Message));
+				{
+					var ex = new AriaException(result.Error.Code, result.Error.Message);
+					Debug.WriteLine(ex.ToString() + "\n");
+					tsc.TrySetException(ex);
+				}
 				else
 					tsc.TrySetResult(result);
 			});
@@ -106,6 +113,8 @@ namespace Aria.Net
 			{
 				if (!completed)
 					tsc.TrySetException(new Exception("Cannot send payload to Aria2 RPC"));
+
+				Debug.WriteLine("Aria2/Send >>:\n{0}\n", args: payload.ToString(Formatting.Indented));
 			});
 
 			return tsc.Task;
@@ -114,9 +123,6 @@ namespace Aria.Net
 		internal async Task<IEnumerable<AriaDownload>> GetDownloadsAsync(string method, JArray arguments)
 		{
 			var res = await this.SendAsync(method, arguments);
-
-			if (res.Error != null)
-				throw new Exception($"{res.Error.Message} ({res.Error.Code})");
 
 			var downloads = res.Result
 				.ToObject<IEnumerable<AriaDownload>>();
@@ -147,14 +153,79 @@ namespace Aria.Net
 			return downloads;
 		}
 
-		public Task<IEnumerable<AriaDownload>> GetActiveDownloadsAsync(params string[] filter) =>
-			this.GetDownloadsAsync("aria2.tellActive", new JArray(new JArray(filter)));
+		public async Task<AriaDownload> GetDownloadAsync(string id, params string[] fields)
+		{
+			if (string.IsNullOrEmpty(id))
+				throw new ArgumentNullException(nameof(id), "Download GID cannot be null or empty.");
 
-		public Task<IEnumerable<AriaDownload>> GetWaitingDownloadsAsync(int index = -1, int limit = 5, params string[] filter) =>
-			this.GetDownloadsAsync("aria2.tellActive", new JArray(index, limit, new JArray(filter)));
+			JArray arguments;
 
-		public Task<IEnumerable<AriaDownload>> GetStoppedDownloadsAsync(int index = -1, int limit = 5, params string[] filter) =>
-			this.GetDownloadsAsync("aria2.tellStopped", new JArray(index, limit, new JArray(filter)));
+			if (fields == null || fields.Length == 0)
+				arguments = new JArray(id);
+			else
+				arguments = new JArray(id, new JArray(fields));
+
+			var res = await this.SendAsync("aria2.tellStatus", arguments);
+			var download = res.Result.ToObject<AriaDownload>();
+
+			download.Client = this;
+
+			if (download.BitTorrent != null)
+				download.BitTorrent.Download = download;
+
+			if (download.Files != null)
+			{
+				foreach (var file in download.Files)
+				{
+					if (file != null)
+					{
+						file.Download = download;
+
+						if (file.Uris != null)
+							foreach (var uri in file.Uris)
+								uri.File = file;
+					}
+				}
+			}
+
+			return download;
+		}
+
+		public Task<IEnumerable<AriaDownload>> GetActiveDownloadsAsync(params string[] fields)
+		{
+			JArray arguments;
+
+			if (fields == null || fields.Length == 0)
+				arguments = default;
+			else
+				arguments = new JArray(new JArray(fields));
+
+			return this.GetDownloadsAsync("aria2.tellActive", arguments);
+		}
+
+		public Task<IEnumerable<AriaDownload>> GetWaitingDownloadsAsync(int index = -1, int limit = 5, params string[] fields)
+		{
+			JArray arguments;
+
+			if (fields == null || fields.Length == 0)
+				arguments = new JArray(index, limit);
+			else
+				arguments = new JArray(index, limit, new JArray(fields));
+
+			return this.GetDownloadsAsync("aria2.tellWaiting", arguments);
+		}
+
+		public Task<IEnumerable<AriaDownload>> GetStoppedDownloadsAsync(int index = -1, int limit = 5, params string[] fields)
+		{
+			JArray arguments;
+
+			if (fields == null || fields.Length == 0)
+				arguments = new JArray(index, limit);
+			else
+				arguments = new JArray(index, limit, new JArray(fields));
+
+			return this.GetDownloadsAsync("aria2.tellStopped", arguments);
+		}
 
 		public async Task<AriaStats> GetStatsAsync()
 		{

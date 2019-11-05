@@ -15,6 +15,6 @@ namespace Aria.Net.Entities
 		public AriaErrorResponse Error { get; internal set; }
 
 		[JsonProperty("result", NullValueHandling = NullValueHandling.Ignore)]
-		public JObject Result { get; internal set; }
+		public JToken Result { get; internal set; }
 	}
 }
